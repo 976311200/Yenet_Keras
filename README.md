@@ -14,3 +14,7 @@ Yenet Code by Keras
 SRM算子在SRM_layer.py
 
 TLU截断层在TLU.py
+
+## 测试
+测试程序是Yenet_test
+会按照内部定义的路径，将预测labels保存至txt文件当中
