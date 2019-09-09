@@ -13,7 +13,7 @@ from SRM_Layer import SRM_layer
 from TLU import TLU_layer
 
 BATCH_SIZE = 20 # 批处理图片个数 默认为50 前期测试
-EPOCHS = 10 # DEFAULT 10
+EPOCHS = 1 # DEFAULT 10
 IMAGE_SIZE = 256 # 输入的是256 x 256
 NUM_CHANNEL = 1 # 通道为1，默认是灰度图
 NUM_LABELS = 2 # Labels个数，有隐写或无隐写
@@ -140,7 +140,9 @@ plot_model(model, to_file=MODEL_VIS_FILE, show_shapes=True)
 # print("wait")
 # print(X_test.shape)
 # print(Y_test.shape)
-model.fit(X_train,
+
+# 开始训练模型
+history= model.fit(X_train,
           Y_train,
           batch_size=BATCH_SIZE,
           epochs=EPOCHS,
@@ -148,3 +150,9 @@ model.fit(X_train,
           validation_data=(X_test, Y_test))
 
 
+# 保存模型
+if not gfile.Exists(MODEL_DIR):
+    gfile.MakeDirs(MODEL_DIR)
+
+model.save(MODEL_FILE)
+print('Saved trained model at %s ' % MODEL_FILE)
