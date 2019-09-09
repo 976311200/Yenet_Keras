@@ -164,3 +164,19 @@ def fit_keras_channels(batch, rows=1024, cols=1024):
         input_shape = (rows, cols, 1)
 
     return batch, input_shape
+
+def prediction(value_of_prediction):
+    """
+    根据网络的预测值
+    进行int化
+    找其中为1的元素的位置下标
+    :param value_of_prediction: 网络预测值
+    :return: 返回元素值为1 的 数组下标，是np.array类型 一维
+    """
+
+    value_of_prediction = value_of_prediction.astype(int)
+    predict_label = np.where(value_of_prediction == 1)
+
+    label = np.array(predict_label)[1]
+
+    return label
