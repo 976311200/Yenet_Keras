@@ -18,3 +18,8 @@ TLU截断层在TLU.py
 ## 测试
 测试程序是Yenet_test
 会按照内部定义的路径，将预测labels保存至txt文件当中
+
+## 继续训练
+使用Yenet_Continue.py
+设置好模型路径后
+即可导入原有模型继续训练
